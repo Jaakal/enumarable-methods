@@ -8,7 +8,7 @@ AllCops:
     - "node_modules/**/*"
   DisplayCopNames: true
 
-Layout/LineLength:
+Metrics/LineLength:
   Max: 120
 Metrics/MethodLength:
   Include: ["app/controllers/*"]
@@ -20,6 +20,12 @@ Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
   ExcludedMethods: ["describe"]
+Metrics/PerceivedComplexity:
+  Max: 15
+Metrics/CyclomaticComplexity:
+  Max: 10
+Metrics/ModuleLength:
+  Max: 150
 
 Style/Documentation:
   Enabled: false

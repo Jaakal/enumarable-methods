@@ -169,27 +169,38 @@ module Enumerable
   end
 end
 
-# array = [12, 2, 4, 56, 34]
-#
-# array.my_each do |int|
-#   puts int * 2
+# Tests required in the Odin Project webpage
+
+# def multiply_els(array)
+#   array.my_inject(:*)
 # end
+# puts multiply_els([2,4,5])
+
+# floats = [1.2, 3.45, 0.91, 7.727, 11.42, 482.911]
+# round_down = Proc.new { |x| x.floor }
+# puts floats.my_map(&round_down)
+
+# Tests from the ruby-doc.org
+
+# array = [12, 2, 4, 56, 34]
+# array.my_each { |int| print (int * 2).to_s + " " }
 #
 # (100..120).my_each do |int|
 #   puts int - 5
 # end
 
 # hash = {}
-#
+
 # %w[cat dog wombat].my_each_with_index do |item, index|
 #   hash[item] = index
 # end
-#
+
 # puts "#{hash}"
 
 # puts "#{(1..10).my_select { |i| i % 3 == 0 }}" #=> [3, 6, 9]
 # puts "#{[11, 23, 3, 14, 5].my_select { |num|  num.even? }}"   #=> [14]
 # puts "#{[:foo, :bar].my_select { |x| x == :foo }}"   #=> [:foo]
+
 # puts %w[ant bear cat].my_all? { |word| word.length >= 3 } #=> true
 # puts %w[ant bear cat].my_all? { |word| word.length >= 4 } #=> false
 # puts %w[ant bear cat].my_all?(/t/)                        #=> false
