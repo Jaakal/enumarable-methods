@@ -169,4 +169,42 @@ describe Enumerable do
       expect((1..4).my_map { |i| i * i }).to eql([1, 4, 9, 16])
     end
   end
+
+  describe "#my_inject" do
+    # # Sum some numbers
+    # puts (5..10).my_inject(:+)                             #=> 45
+    # puts (5..10).my_inject { |sum, n| sum + n }            #=> 45
+
+    # # Multiply some numbers
+    # puts (5..10).my_inject(1, :*)                          #=> 151200
+    # puts (5..10).my_inject(1) { |product, n| product * n } #=> 151200
+
+    # # find the longest word
+    # longest = %w[cat sheep bear].my_inject do |memo, word|
+    #   memo.length > word.length ? memo : word
+    # end
+    # puts longest #=> "sheep"
+
+    it "returns the sum of a range given a symbol" do
+      expect((5..10).my_inject(:+)).to eql(45)
+    end
+
+    it "returns the sum of a range given a block" do
+      expect((5..10).my_inject { |sum, n| sum + n }).to eql(45)
+    end
+
+    it "returns the product of a range given an arg and a symbol" do
+      expect((5..10).my_inject(1, :*)).to eql(151200)
+    end
+
+    it "returns the product of a range given a block and arg" do
+      expect((5..10).my_inject(1) { |product, n| product * n }).to eql(151200)
+    end
+
+    it "returns the longest word in arr" do
+      expect(%w[cat sheep bear].my_inject do |memo, word|
+        memo.length > word.length ? memo : word
+      end).to eql("sheep")
+    end
+  end
 end
