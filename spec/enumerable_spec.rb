@@ -117,15 +117,6 @@ describe Enumerable do
   end
 
   describe "#my_none" do
-    # puts %w{ant bear cat}.my_none? { |word| word.length == 5 } #=> true
-    # puts %w{ant bear cat}.my_none? { |word| word.length >= 4 } #=> false
-    # puts %w{ant bear cat}.my_none?(/d/)                        #=> true
-    # puts [1, 3.14, 42].my_none?(Float)                         #=> false
-    # puts [].my_none?                                           #=> true
-    # puts [nil].my_none?                                        #=> true
-    # puts [nil, false].my_none?                                 #=> true
-    # puts [nil, false, true].my_none?
-
     it "returns true if no word in [ant, bear, cat] has length equal to 5" do
       expect(["ant", "bear", "cat"].my_none? { |word| word.length == 5 }).to be true
     end
@@ -156,6 +147,26 @@ describe Enumerable do
 
     it "returns true if atleast one truthy value is found in array" do
       expect([nil, false, true].my_none?).to be false
+    end
+  end
+
+  describe "#my_count" do
+    it "returns the number of elements in the array" do
+      expect([1, 2, 4, 2].my_count).to eql(4)
+    end
+
+    it "returns the number of 2's in the array" do
+      expect([1, 2, 4, 2].my_count(2)).to eql(2)
+    end
+
+    it "returns the number of even elements" do
+      expect([1, 2, 4, 2].my_count { |x| x % 2 == 0 }).to eql(3)
+    end
+  end
+
+  describe "#my_map" do
+    it "returns an array of the product of itself" do
+      expect((1..4).my_map { |i| i * i }).to eql([1, 4, 9, 16])
     end
   end
 end
