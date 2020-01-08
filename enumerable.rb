@@ -153,7 +153,7 @@ module Enumerable
     array.delete_at(initial_element)
 
     if symbol
-      return array[-1] if symbol.to_s == "="
+      return array[-1] if symbol.to_s == '='
 
       array.my_each do |element|
         result = result.send(symbol.to_s, element)
@@ -194,7 +194,7 @@ hash = {}
   hash[item] = index
 end
 
-puts "#{hash}"
+puts hash.to_s
 
 # puts "#{(1..10).my_select { |i| i % 3 == 0 }}" #=> [3, 6, 9]
 # puts "#{[11, 23, 3, 14, 5].my_select { |num|  num.even? }}"   #=> [14]
