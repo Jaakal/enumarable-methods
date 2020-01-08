@@ -8,9 +8,8 @@ module Enumerable
     return_array = to_a
 
     (0...return_array.length).each do |i|
-      yield(return_array[i])
+      return_array[i] = yield(return_array[i])
     end
-
     return_array
   end
 
@@ -183,19 +182,19 @@ end
 # Tests from the ruby-doc.org
 
 # array = [12, 2, 4, 56, 34]
-# array.my_each { |int| print (int * 2).to_s + " " }
+# print array.my_each { |int| int * 2 }
 #
 # (100..120).my_each do |int|
 #   puts int - 5
 # end
 
-# hash = {}
+hash = {}
 
-# %w[cat dog wombat].my_each_with_index do |item, index|
-#   hash[item] = index
-# end
+%w[cat dog wombat].my_each_with_index do |item, index|
+  hash[item] = index
+end
 
-# puts "#{hash}"
+puts hash.to_s
 
 # puts "#{(1..10).my_select { |i| i % 3 == 0 }}" #=> [3, 6, 9]
 # puts "#{[11, 23, 3, 14, 5].my_select { |num|  num.even? }}"   #=> [14]
