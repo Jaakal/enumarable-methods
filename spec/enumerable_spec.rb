@@ -116,4 +116,23 @@ describe Enumerable do
       expect([false, nil, false].my_all?).to eql(false)
     end
   end
+
+  describe '#my_none' do
+    # puts %w{ant bear cat}.my_none? { |word| word.length == 5 } #=> true
+    # puts %w{ant bear cat}.my_none? { |word| word.length >= 4 } #=> false
+    # puts %w{ant bear cat}.my_none?(/d/)                        #=> true
+    # puts [1, 3.14, 42].my_none?(Float)                         #=> false
+    # puts [].my_none?                                           #=> true
+    # puts [nil].my_none?                                        #=> true
+    # puts [nil, false].my_none?                                 #=> true
+    # puts [nil, false, true].my_none?     
+
+    it 'true if no word in [ant, bear, cat] has length equal to 5' do
+      expect(['ant', 'bear', 'cat'].my_none? { |word| word.length == 5 }).to eql(true)
+    end
+
+    it 'false if any word in [ant, bear, cat] has length equal to 4 or more' do
+      expect(['ant', 'bear', 'cat'].my_none? { |word| word.length >= 4 }).to eql(false)
+    end
+  end
 end
